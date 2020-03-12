@@ -1,0 +1,9 @@
+{
+  "experiments": {
+    "canSendEmails": true
+  },
+  "metaData": {
+    "--include includes/metaData_nested_2.json": "DEFAULTS",
+    "numEmailsSent": 27
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "temperature": "AbsoluteZero",
+  "--map stats": [
+    {
+      "level": 3,
+      "items": [
+        "Max Mushroom",
+        "Power Blast",
+        [
+          {
+            "--map otherItem": [
+              "Bracer",
+              "Energizer"
+            ]
+          }
+        ]
+      ],
+      "--map favoriteItem": [
+        "Fire Bomb",
+        "Rock Candy",
+        "Red Essence"
+      ]
+    },
+    [
+      66,
+      "thisIsAString",
+      {
+        "abc": "123"
+      },
+      {
+        "--map abc": [
+          123,
+          "234",
+          {
+            "xyz": "zyx"
+          },
+          null
+        ]
+      },
+      null
+    ],
+    "_BLANK_"
+  ]
+}

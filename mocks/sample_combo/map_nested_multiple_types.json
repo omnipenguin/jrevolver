@@ -1,0 +1,58 @@
+{
+  "--map dataStructure-One": [
+    42,
+    [
+      "one",
+      2,
+      "three",
+      {
+        "--map four": [
+          4,
+          44,
+          "FOUR"
+        ]
+      }
+    ],
+    null,
+    {
+      "one": 1,
+      "two": 2,
+      "--map three": [
+        3,
+        33,
+        "THREE",
+        "--include includes/card.json"
+      ]
+    },
+    "this_is_a_string"
+  ],
+  "--map dataStructure-Two": [
+    0,
+    [
+      [],
+      [[]],
+      [ [1], 2, [[3]] ],
+      {
+        "--map nestedArrayObj": [
+          [{}],
+          [[[11], [[],22], 333]],
+          {
+            "--mapKey": "arr",
+            "--mapContent": []
+          }
+        ]
+      }
+    ],
+    "blank",
+    {
+      "uno": 1,
+      "dos": 2,
+      "--map tres": [
+        "--include includes/metaData_with_maps.json"
+      ]
+    },
+    "one hundred total mocks"
+  ],
+  "seventySeven": 77,
+  "--include includes/metaData.json": "DEFAULTS"
+}

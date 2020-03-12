@@ -1,0 +1,14 @@
+{
+  "temperature": "AbsoluteZero",
+  "--map metal": [ "Iridium", "Platinum", "Bismuth", "Heavy" ],
+  "metalProperties": {
+    "weightData": {
+      "tooHeavy": false,
+      "units": "grams",
+      "--map numberOf": [ 111, 343 ],
+      "--map numEmailsSent": [ { "value": 42 }, [ 888, 101 ], 771 ],
+      "--include includes/metaData.json": "PERMUTE"
+    },
+    "--map specialProperty": [ "radiation", "shiny", "rock_out" ]
+  }
+}

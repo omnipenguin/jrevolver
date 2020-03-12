@@ -1,0 +1,18 @@
+{
+  "--comment this comment is a string": "test",
+  "--comment this comment is an Array": [
+    "one",
+    "two",
+    "three"
+  ],
+  "--comment this comment is an Object": {
+    "one": "uno",
+    "two": true,
+    "three": 3
+  },
+  "testArr": [
+    1,
+    "--comment comment inside of an array",
+    "2"
+  ]
+}

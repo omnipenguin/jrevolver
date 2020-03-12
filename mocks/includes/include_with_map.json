@@ -1,0 +1,8 @@
+{
+  "inclCtxt": {
+    "--map map-abc": [ "AAA", "BBB" ],
+    "--map map-def": [ "CCC", "DDD", "EEE" ]
+  },
+  "numEmailsSent": 20,
+  "--include includes/metaData.json": "PERMUTE"
+}

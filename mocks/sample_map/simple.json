@@ -1,0 +1,10 @@
+{
+  "temperature": "AbsoluteZero",
+  "--map metal": [ "Iridium", "Platinum", "Bismuth", "Heavy" ],
+  "metalProperties": {
+    "weightData": {
+      "--map numberOfGrams": [ 111, 343 ]
+    },
+    "--map specialProperty": [ "radiation", "shiny", "rock_out" ]
+  }
+}

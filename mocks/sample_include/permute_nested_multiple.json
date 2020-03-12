@@ -1,0 +1,9 @@
+{
+  "experiments": {
+    "canSendEmails": true
+  },
+  "metaData": {
+    "--include includes/metaData_nested_2_addtl_params.json": "PERMUTE",
+    "numEmailsSent": 27
+  }
+}

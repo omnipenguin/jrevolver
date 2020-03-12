@@ -1,0 +1,40 @@
+{
+  "name": "Mario",
+  "stats": {
+    "HP": 255,
+    "FP": 255
+  },
+  "inventory": {
+    "items": [
+      { "item": "Max Mushroom" },
+      { "item": "Royal Syrup" }
+    ]
+  },
+  "--map cap": [ "Metal", "Wing", "Vanish" ],
+  "--map": [
+    {
+      "--comment": "glitch stats",
+      "status": "invincible",
+      "stats": {
+        "HP": "0/0"
+      }
+    },
+    {
+      "--comment rng": "RNG GOD",
+      "level": 3
+    },
+    {
+      "inventory": {
+        "items": [ "Red Essence", "Rock Candy" ]
+      }
+    }
+  ],
+  "subCon": {
+    "boss": "Birdo",
+    "--map": [
+      { "HP": 12, "MP": 20 },
+      { "HP": 11, "MP": 99 },
+      { "HP":  6, "MP":  6 }
+    ]
+  }
+}

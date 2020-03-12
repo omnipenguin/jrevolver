@@ -1,0 +1,69 @@
+{
+  "inventory": {
+    "items": [
+      {
+        "item": "Max Mushroom",
+        "otherItems": [
+          "--comment stuff",
+          "Fire Bomb",
+          {
+            "item": "$17",
+            "type": "glitch item",
+            "arr": [
+              33,
+              [
+                [
+                  88,
+                  {
+                    "test": "test2"
+                  }
+                ]
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "item": "Royal Syrup"
+      }
+    ]
+  },
+  "--map": [
+    {
+      "level": 3
+    },
+    {
+      "inventory": {
+        "items": [
+          {
+            "item": "Mid Mushroom",
+            "otherItems": [
+              "Ice Bomb",
+              {
+                "item": "$18",
+                "type": "glitch item",
+                "arr": [
+                  "00",
+                  [
+                    [
+                      22,
+                      {
+                        "test33": "test44"
+                      }
+                    ]
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "item": "Red Essence"
+          },
+          {
+            "item": "Rock Candy"
+          }
+        ]
+      }
+    }
+  ]
+}

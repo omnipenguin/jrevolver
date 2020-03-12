@@ -1,0 +1,48 @@
+{
+  "name": "jrevolver",
+  "version": "1.0.0",
+  "description": "A robust app for generating mock JSON for testing purposes.",
+  "author": "Eclipse0",
+  "license": "MIT",
+  "keywords": [
+    "test",
+    "play",
+    "mock",
+    "json",
+    "permutations",
+    "permutation generator",
+    "mock generator",
+    "test data"
+  ],
+  "main": "lib/jrevolver.js",
+  "type": "module",
+  "scripts": {
+    "generate-mocks": "node --experimental-modules --no-warnings lib/jrevolver.js mocks mockgen mocks-extra-include",
+    "clean-generated": "rm -rf mockgen",
+    "lint-js": "node_modules/.bin/eslint .",
+    "test": "node --experimental-modules test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eclipse0/jrevolver.git"
+  },
+  "engines": {
+    "node": "^12.10.0"
+  },
+  "dependencies": {
+    "colors": "^1.3.2",
+    "lodash": "^4.17.15",
+    "object-assign-deep": "^0.4.0",
+    "shelljs": "^0.7.8"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.18.1",
+    "husky": "^3.0.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm test"
+    }
+  }
+}
