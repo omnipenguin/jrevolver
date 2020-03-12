@@ -1,0 +1,47 @@
+{
+  "temperature": "AbsoluteZero",
+  "--map numberOfGrams": [ 111, 882, 117, 443 ],
+  "--map metal": [ "Iridium", "Heavy" ],
+  "--map keyzzz": [
+    { "--mapKey": "aaa", "t_": "a" },
+    { "--mapKey": "bbb", "t_": "b" },
+    { "--mapKey": "ccc", "t00_": "c" },
+    { "--mapKey": "ddd", "t_": "d" }
+  ],
+  "n": {
+    "n2": {
+      "--map otherVal": [ 8, 3, 1 ],
+      "--map strNum": [
+        { "--mapKey": "EightyEight", "--mapContent": "88" },
+        { "--mapKey": "ThirtyThree", "--mapContent": "33" },
+        { "--mapKey": "TripleZero", "--mapContent": "000" }
+      ],
+      "--mapBlacklist": [
+        {
+          "otherVal": 3,
+          "strNum": "--mapKey TripleZero"
+        },
+        {
+          "otherVal": 1,
+          "strNum": "--mapKey EightyEight"
+        },
+        {
+          "otherVal": 1,
+          "strNum": "--mapKey ThirtyThree"
+        }
+      ]
+    },
+    "other64": "8FKIihlj2Wf89b6Mt1dD9Q=="
+  },
+  "--mapBlacklist": [
+    {
+      "numberOfGrams": 111,
+      "metal": "Iridium",
+      "keyzzz": "--mapKey aaa"
+    },
+    {
+      "numberOfGrams": 882,
+      "prprtee": "Heavy"
+    }
+  ]
+}

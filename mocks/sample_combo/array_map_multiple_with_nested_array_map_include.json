@@ -1,0 +1,63 @@
+{
+  "--map oddNumber": [3,7,23],
+  "--map": [
+    {
+      "sectionMetaData": {
+        "_data": "empty_LOL"
+      },
+      "noMetaData": true
+    },
+    {
+      "sectionMetaData": {
+        "_data": "full_LOL"
+      },
+      "noMetaData": null
+    }
+  ],
+  "sections": [
+    {
+      "blahStr": "BLAHblah",
+      "blahCount": 1334,
+      "override": 0,
+      "sectionType": "SECT_AAA"
+    },
+    {
+      "includedFrom": "card-list.json",
+      "--include includes/card-list.json": "DEFAULT",
+      "sectionType": "SECT_BBB"
+    },
+    {
+      "--comment permutationsComment": "no permutations here",
+      "noPermutations": true,
+      "sectionType": "SECT_CCC"
+    },
+    {
+      "--map cards": [
+        {
+          "cardNum": 1
+        },
+        {
+          "cardNum": 2
+        }
+      ],
+      "sectionType": "SECT_DDD"
+    }
+  ],
+  "arrgh": [
+    [
+      [
+        "x",
+        []
+      ]
+    ],
+    [
+      "y",
+      [
+        [
+          "z"
+        ],
+        []
+      ]
+    ]
+  ]
+}

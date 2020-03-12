@@ -1,0 +1,10 @@
+{
+  "--include incl/extra-include.json": "PERMUTE",
+  "size": 33,
+  "extra": "--include incl/extra-include.json",
+
+  "--comment": "The two properties below will throw WARNINGS when compiled",
+  "shouldBeNull": "--include incl/doesnt-exist-value.json",
+  "--include incl/doesnt-exist-prop.json": "DEFAULTS",
+  "--comment comment_1a": "The two properties above will throw WARNINGS when compiled"
+}

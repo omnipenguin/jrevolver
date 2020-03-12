@@ -1,0 +1,8 @@
+{
+  "firstName": "bob",
+  "lastName": "smith",
+  "numEmailsSent": 5,
+  "--map prevJobId": [ 123, 117 ],
+  "hoursWorked": 11,
+  "--map favAnimal": [ "penguin", "owl" ]
+}

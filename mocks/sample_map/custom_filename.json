@@ -1,0 +1,14 @@
+{
+  "--filename": "{page.pageName}-page-{locale.llll.lang}_{locale.cccc.country}",
+  "locale": {
+    "llll": {
+      "--map lang": [ "en", "de", "ja" ]
+    },
+    "cccc": {
+      "--map country": [ "US", "DE", "JP" ]
+    }
+  },
+  "page": {
+    "--map pageName": [ "home", "search", "course" ]
+  }
+}

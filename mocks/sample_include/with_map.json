@@ -1,0 +1,5 @@
+{
+  "--map testBool": [ true, false ],
+  "--map mapString": [ "STRING1", "STR_b", "quux" ],
+  "--map mapIncl": [ "--include includes/include_with_map.json", false, null ]
+}

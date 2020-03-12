@@ -1,0 +1,41 @@
+{
+  "includedFrom": "card-list.json",
+  "--map cardList": [
+    [
+      {
+        "--include includes/card.json": "DEFAULTS",
+        "override": 1
+      },
+      {
+        "--include includes/card.json": "DEFAULTS",
+        "override": 2
+      },
+      {
+        "--include includes/card.json": "DEFAULTS",
+        "override": 3
+      },
+      {
+        "--include includes/card.json": "DEFAULTS",
+        "override": 4
+      }
+    ],
+    [
+      {
+        "--include includes/card.json": "DEFAULTS",
+        "override": 11
+      },
+      {
+        "--include includes/card.json": "DEFAULTS",
+        "override": 12
+      },
+      {
+        "--include includes/card.json": "DEFAULTS",
+        "override": 13
+      },
+      {
+        "--include includes/card.json": "DEFAULTS",
+        "override": 14
+      }
+    ]
+  ]
+}
