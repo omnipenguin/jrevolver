@@ -1,0 +1,39 @@
+{
+  "temperature": "AbsoluteZero",
+  "--map numberOfGrams": [ 111, 882, 117, 443 ],
+  "--map metal": [ "Iridium", "Heavy" ],
+  "--map prprtee": [
+    { "--mapKey": "rads", "adtl": "radiation", "--comment type": "should be removed" },
+    { "--mapKey": "RO",   "typ": "rock_out" }
+  ],
+  "--map keyzzz": [
+    { "--mapKey": "aaa", "t_": "a" },
+    { "--mapKey": "bbb", "t_": "b" },
+    { "--mapKey": "ccc", "t00_": "c" },
+    { "--mapKey": "ddd", "t_": "d" }
+  ],
+  "--mapBlacklist": [
+    {
+      "--comment": "rrr",
+      "numberOfGrams": 111,
+      "metal": "Iridium"
+    },
+    {
+      "numberOfGrams": 882,
+      "prprtee": "--mapKey RO"
+    },
+    {
+      "--comment blCOMMENT": "xxxyyyzzz",
+      "--map numberOfGrams": [ 111, 117, 443 ],
+      "metal": "Heavy",
+      "prprtee": "--mapKey rads"
+    },
+    {
+      "--map numberOfGrams": [ 111, 117, 882, 117 ],
+      "--map keyzzz": [
+        "--mapKey aaa",
+        "--mapKey bbb"
+      ]
+    }
+  ]
+}

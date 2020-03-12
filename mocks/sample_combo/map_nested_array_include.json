@@ -1,0 +1,24 @@
+{
+  "--map myArray": [
+    [
+      {
+        "myProp": [
+          {
+            "--include includes/metaData.json": null,
+            "numEmailsSent": 66
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "myProp": [
+          {
+            "--include includes/metaData.json": null,
+            "numEmailsSent": 99
+          }
+        ]
+      }
+    ]
+  ]
+}

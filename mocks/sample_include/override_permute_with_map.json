@@ -1,0 +1,12 @@
+{
+  "experiments": {
+    "canSendEmails": true
+  },
+  "metaData": {
+    "--include includes/metaData_with_maps.json": "PERMUTE",
+    "numEmailsSent": 10,
+    "prevJobId": 12,
+    "--map hoursWorked": [ 16, null ],
+    "--map favAnimal": [ "ostrich", "turtle" ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "sections": [
+    {
+      "--include includes/card.json": "DEFAULTS",
+      "sectionType": "SECT_AAA"
+    },
+    {
+      "--include includes/card-list.json": "DEFAULTS",
+      "sectionType": "SECT_BBB"
+    },
+    {
+      "--comment permutationsComment": "no permutations here",
+      "noPermutations": true,
+      "sectionType": "SECT_CCC"
+    },
+    {
+      "--map cards": [
+        {
+          "cardNum": 1
+        },
+        {
+          "cardNum": 2
+        }
+      ],
+      "sectionType": "SECT_DDD"
+    }
+  ]
+}

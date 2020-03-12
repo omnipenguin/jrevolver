@@ -1,0 +1,15 @@
+{
+  "temperature": "AbsoluteZero",
+  "--map metal": [ "Iridium", "Heavy" ],
+  "--map prprtee": [
+    { "--mapKey": "rads",   "--mapContent": [ 1, 2, 77 ] },
+    { "--mapKey": "dubble", "--mapContent": [ 2, 22 ] },
+    { "--mapKey": "ggH",    "--mapContent": [ 42, 88 ] }
+  ],
+  "--mapBlacklist": [
+    {
+      "metal": "Heavy",
+      "prprtee": "--mapKey ggH"
+    }
+  ]
+}
