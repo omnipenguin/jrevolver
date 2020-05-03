@@ -785,7 +785,7 @@ will result in the mocks:
 
 ### --filename
 
---filename allows you to specify a custom filename for outputted mock files. You can use values from the current mock file in the filename.mIf the naming schema defined would cause multiple mocks with the same filename to be generated, every mock that would have duplicated filenames after the first will be generated with its default (hashed) filename.
+--filename allows you to specify a custom filename for outputted mock files. You can use values from the current mock file in the filename. If the naming schema defined would cause multiple mocks with the same filename to be generated, every mock that would have duplicated filenames after the first will be generated with its default (hashed) filename.
 
 `mock_with_filename.json`
 ```
