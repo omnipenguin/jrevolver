@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "colors": "^1.3.2",
-    "lodash": "^4.17.15",
+    "lodash.assigninwith": "^4.2.0",
     "object-assign-deep": "^0.4.0",
     "shelljs": "^0.7.8"
   },
