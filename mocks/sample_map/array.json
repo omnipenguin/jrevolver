@@ -6,7 +6,7 @@
     { "--mapKey": "dubble", "--mapContent": [ 2, 22 ] },
     { "--mapKey": "ggH",    "--mapContent": [ 42, 88 ] }
   ],
-  "--mapBlacklist": [
+  "--mapExclude": [
     {
       "metal": "Heavy",
       "prprtee": "--mapKey ggH"

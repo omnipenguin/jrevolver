@@ -3,7 +3,7 @@
   "--map lang": [ "en", "de", "ja" ],
   "--map country": [ "US", "DE", "JP" ],
   "--map page": [ "home", "search", "course" ],
-  "--mapBlacklist": [
+  "--mapExclude": [
     {
       "lang": "de",
       "--map country": [ "US", "JP" ]

@@ -16,7 +16,7 @@
         { "--mapKey": "ThirtyThree", "--mapContent": "33" },
         { "--mapKey": "TripleZero", "--mapContent": "000" }
       ],
-      "--mapBlacklist": [
+      "--mapExclude": [
         {
           "otherVal": 3,
           "strNum": "--mapKey TripleZero"
@@ -33,7 +33,7 @@
     },
     "other64": "8FKIihlj2Wf89b6Mt1dD9Q=="
   },
-  "--mapBlacklist": [
+  "--mapExclude": [
     {
       "numberOfGrams": 111,
       "metal": "Iridium",
