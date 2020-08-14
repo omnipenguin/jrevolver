@@ -2,7 +2,7 @@
   "temperature": "AbsoluteZero",
   "--map numberOfGrams": [ 111, 343, 882 ],
   "--map metal": [ "Iridium", "Platinum", "Heavy", "Uranium" ],
-  "--mapWhitelist": [
+  "--mapAllowOnly": [
     {
       "numberOfGrams": 111,
       "metal": "Platinum"

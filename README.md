@@ -12,8 +12,8 @@ jRevolver gives engineers a way to:
     Combine JSON files – includes files within other files
     Define multiple possible values for a single JSON key
     Automatically generate mock JSON, respecting all value permutations for multiple keys
-    Define a blacklist for specific key/value combinations
-    Define a whitelist for specific key/value combinations
+    Define a exclude list for specific key/value combinations
+    Define a allow list for specific key/value combinations
     Other useful features such as comments and control over outputted mock filenames
 
 ## Examples
@@ -170,15 +170,15 @@ This would generate **3 mocks**
 }
 ```
 
-#### Simple use with Blacklist
+#### Simple use with Exclude
 
-`map_simple_use_with_blacklist.json`
+`map_simple_use_with_exclude.json`
 ```
 {
   "temperature": "AbsoluteZero",
   "--map numberOfGrams": [ 111, 343, 882 ],
   "--map metal": [ "Iridium", "Platinum", "Heavy" ],
-  "--mapBlacklist": [
+  "--mapExclude": [
     {
       "numberOfGrams": 343,
     },
@@ -192,7 +192,7 @@ This would generate **3 mocks**
 
 This would generate 3x3=9-4=**5 mocks**
 
-`map_simple_use_with_blacklist.json` – generated mocks
+`map_simple_use_with_exclude.json` – generated mocks
 ```
 {
   "temperature": "AbsoluteZero",
@@ -229,9 +229,9 @@ This would generate 3x3=9-4=**5 mocks**
 }
 ```
 
-With the Blacklist, these mocks will not be generated:
+With the Exclude list, these mocks will not be generated:
 
-`map_simple_use_with_blacklist.json` – excluded mocks
+`map_simple_use_with_exclude.json` – excluded mocks
 ```
 {
   "temperature": "AbsoluteZero",
@@ -261,15 +261,15 @@ With the Blacklist, these mocks will not be generated:
 }
 ```
 
-#### Simple use with Whitelist
+#### Simple use with allowOnly
 
-`map_simple_use_with_whitelist.json`
+`map_simple_use_with_allow_only.json`
 ```
 {
   "temperature": "AbsoluteZero",
   "--map numberOfGrams": [ 111, 343, 882 ],
   "--map metal": [ "Iridium", "Platinum", "Heavy" ],
-  "--mapWhitelist": [
+  "--mapAllowOnly": [
     {
       "numberOfGrams": 111
     },
@@ -282,7 +282,7 @@ With the Blacklist, these mocks will not be generated:
 
 This would generate **4 mocks**
 
-`map_simple_use_with_blacklist.json` – generated mocks
+`map_simple_use_with_exclude.json` – generated mocks
 ```
 {
   "temperature": "AbsoluteZero",
@@ -365,7 +365,7 @@ This would generate **4 mocks**
 }
 ```
 
-`map_complex_use_with_blacklist.json`
+`map_complex_use_with_exclude.json`
 ```
 {
   "temperature": "NuclearBomb",
@@ -385,7 +385,7 @@ This would generate **4 mocks**
       "trueValue": null
     }
   ],
-  "--mapBlacklist": [
+  "--mapExclude": [
     {
       "numberOfGrams": 343,
       "metal": "Bismuth"
@@ -399,14 +399,14 @@ This would generate **4 mocks**
 }
 ```
 
-`map_complex_use_with_whitelist.json`
+`map_complex_use_with_allow_only.json`
 ```
 {
   "temperature": "NotANumber",
   "--map numberOfGrams": [ 111, 343, 882 ],
   "--map metal": [ "Iridium", "Platinum", "Bismuth", "Heavy" ],
   "--map price": [ "$12355", 111.2, null ],
-  "--mapWhitelist": [
+  "--mapAllowOnly": [
     {
       "numberOfGrams": 343
     },
@@ -419,9 +419,9 @@ This would generate **4 mocks**
 }
 ```
 
-#### --mapContent: blacklists and whitelists with non-object values
+#### --mapContent: exclude and allow lists with non-object values
 
-In order to blacklist or whitelist a permutation for a map where the value is a non-primitive type, it must have a --mapKey property. But what if you want to filter a value that is an Array, or another non-Object that is also not a JSON primitive type? --mapContent allows you to do this:
+In order to exclude or allow a permutation for a map where the value is a non-primitive type, it must have a --mapKey property. But what if you want to filter a value that is an Array, or another non-Object that is also not a JSON primitive type? --mapContent allows you to do this:
 
 `map_with_mapContent.json`
 ```
@@ -442,7 +442,7 @@ In order to blacklist or whitelist a permutation for a map where the value is a 
       "--mapContent": [ 42, 88 ]
     }
   ],
-  "--mapBlacklist": [
+  "--mapExclude": [
     {
       "metal": "Heavy",
       "endsUpAnArray": "--mapKey ggH"
@@ -496,7 +496,7 @@ This out output the mocks:
 }
 ```
 
-The value of the --mapContent property (the array) becomes the value of endsUpAnArray (for that permutation). We are also blacklisting the permutation indexed by --mapKey "ggH"
+The value of the --mapContent property (the array) becomes the value of endsUpAnArray (for that permutation). We are also excluding the permutation indexed by --mapKey "ggH"
 
 ### --include
 

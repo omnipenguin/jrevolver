@@ -12,7 +12,7 @@
     { "--mapKey": "ccc", "t00_": "c" },
     { "--mapKey": "ddd", "t_": "d" }
   ],
-  "--mapBlacklist": [
+  "--mapExclude": [
     {
       "--comment": "rrr",
       "numberOfGrams": 111,
