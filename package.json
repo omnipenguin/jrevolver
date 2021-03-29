@@ -27,7 +27,7 @@
     "url": "https://github.com/Eclipse0/jrevolver.git"
   },
   "engines": {
-    "node": "^12.10.0"
+    "node": ">=12.10.0"
   },
   "dependencies": {
     "colors": "^1.3.2",
