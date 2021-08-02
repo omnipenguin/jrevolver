@@ -4,10 +4,9 @@ A robust app for generating mock JSON for testing purposes
 
 # Intent
 
-To build a flexible and robust mock data generation tool that can be easily be plugged into many different testing pipelines across multiple teams.
-Engineering needs
+To build a flexible and robust mock data generation tool that can be easily be plugged into many different testing pipelines.
 
-jRevolver gives engineers a way to:
+# Features
 
     Combine JSON files – includes files within other files
     Define multiple possible values for a single JSON key
