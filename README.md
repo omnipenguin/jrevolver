@@ -1,10 +1,10 @@
 # What is jRevolver?
 
-A robust app for generating mock JSON for testing purposes
+A robust app for generating mock JSON for development and testing purposes
 
 # Intent
 
-To build a flexible and robust mock data generation tool that can be easily be plugged into many different testing pipelines.
+To build a flexible and robust mock data generation tool that can be easily be plugged into many different development pipelines.
 
 # Features
 
@@ -164,8 +164,8 @@ This would generate **3 mocks**
 {
   "temperature": "AbsoluteZero",
   "metal": "Bismuth",
-  "baryons": "209",
-  "weight": 100
+  "weight": 100,
+  "baryons": "209"
 }
 ```
 
@@ -179,7 +179,7 @@ This would generate **3 mocks**
   "--map metal": [ "Iridium", "Platinum", "Heavy" ],
   "--mapExclude": [
     {
-      "numberOfGrams": 343,
+      "numberOfGrams": 343
     },
     {
       "numberOfGrams": 111,
@@ -281,7 +281,7 @@ With the Exclude list, these mocks will not be generated:
 
 This would generate **4 mocks**
 
-`map_simple_use_with_exclude.json` – generated mocks
+`map_simple_use_with_allow_only.json` – generated mocks
 ```
 {
   "temperature": "AbsoluteZero",
@@ -486,6 +486,17 @@ This out output the mocks:
 ```
 {
   "temperature": "AbsoluteZero",
+  "metal": "Heavy",
+  "endsUpAnArray": [
+    1,
+    2,
+    77
+  ]
+}
+```
+```
+{
+  "temperature": "AbsoluteZero",
   "metal": "Iridium",
   "endsUpAnArray": [
     1,
@@ -644,7 +655,7 @@ Will result in the mock:
 }
 ```
 
-A property in file that is included with "DEFAULTS" will be overridden by an identically named map in the root JSON file
+A property in a file that is included with "DEFAULTS" will be overridden by an identically named map in the root JSON file
 
 `metaData.json`
 ```
