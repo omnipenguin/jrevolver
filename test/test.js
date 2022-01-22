@@ -1,7 +1,5 @@
 #! /usr/bin/env node
-Error.stackTraceLimit = 1000;
-
-import { readdirSync, readFileSync, statSync } from 'fs';
+import { readdirSync, readFileSync } from 'fs';
 import shell from 'shelljs';
 import colors from 'colors';
 import { md5 } from '../lib/helpers.js';
@@ -37,8 +35,11 @@ const MOCK_PATHS = {
     'sample_combo/array_map_single_nested_array_map_include',
     'sample_combo/map_nested_array_include',
     'sample_combo/map_nested_multiple_types',
-  ]
+    'sample_combo/spaces_in_key_names',
+  ],
 };
+
+Error.stackTraceLimit = 1000;
 
 shell.exec(`npm run clean-generated`);
 shell.exec(`npm run generate-mocks`);
@@ -72,14 +73,19 @@ for (const mockFile of MOCK_PATHS.SINGLE_OUTPUT) {
   }
 }
 
-// validate mocks that generate multiple permutations against stored hashes
+/**
+ * Determines if the contents of two arrays are equal
+ * @param a {Array}
+ * @param b {Array}
+ * @returns {Boolean}
+ */
 function arrayEquals(a, b) {
   if (a === b) {
     return true;
   }
 
   if (
-    (a == null || b == null) ||
+    (a == null || b == null) || // eslint-disable-line eqeqeq
     (a.length !== b.length)
   ) {
     return false;

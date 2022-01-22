@@ -1,0 +1,53 @@
+{
+  "--map   shouldBeParsed_0 ": [36, 42, 78, 6],
+  "--map     ": [
+    {
+      "data": "should be parsed as a map with a keyname containing only whitepsace"
+    },
+    {
+      "sectionMetaData": {
+        "_data": "full_LOL"
+      },
+      "noMetaData": null
+    }
+  ],
+  "--map": [
+    {
+      "data": null
+    },
+    {
+      "data": "something"
+    }
+  ],
+
+  "--comment mapWithLeadingSpaces": "maps with leading spaces should not be parsed",
+  " --map shouldNotBeParsed_1": [0, null, 1],
+  " --map   shouldNotBeParsed_2 ": [null, 1, 2],
+
+  "--comment currentContextMapWithLeadingSpaces": "current context maps with leading spaces should not be parsed",
+  " --map": [
+    {
+      "data": null
+    },
+    {
+      "data": "something"
+    }
+  ],
+  " --map    ": [
+    {
+      "data": null
+    },
+    {
+      "data": "something"
+    }
+  ],
+
+  " --comment": "comments with leading spaces should NOT be removed",
+  "    --comment ": "comments with leading spaces should NOT be removed",
+  "--comment    ": "comments with trailing spaces should still be removed",
+
+  "--comment includeWithLeadingAndTrailingSpacesAroundPath": "include path should have leading and trailing spaces trimmed",
+  "includeWithLeadingAndTrailingSpacesAroundPath": {
+    "--include     includes/card-list.json ": "DEFAULT"
+  }
+}
