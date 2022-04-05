@@ -18,7 +18,7 @@ module.exports = {
     ecmaFeatures: {
       impliedStrict: false,
       legacyDecorators: true,
-    }
+    },
   },
   plugins: [
     'import',
@@ -27,14 +27,14 @@ module.exports = {
     'array-callback-return': ERROR,
     'block-scoped-var': WARN,
     'camelcase': [ERROR, {
-      'properties': 'never'
+      'properties': 'never',
     }],
     'comma-dangle': [WARN, 'always-multiline'],
     'complexity': DISABLED,
     'consistent-this': [DISABLED, 'self'],
     'curly': [WARN, 'multi-line'],
     'dot-notation': [DISABLED, {
-      'allowKeywords': true
+      'allowKeywords': true,
     }],
     'eqeqeq': WARN,
     'global-strict': DISABLED,
@@ -47,7 +47,7 @@ module.exports = {
     'max-statements': DISABLED,
     'new-cap': [ERROR, {
       'newIsCap': true,
-      'capIsNew': false
+      'capIsNew': false,
     }],
     'no-array-constructor': ERROR,
     'no-bitwise': WARN,
@@ -70,7 +70,7 @@ module.exports = {
     'no-undef': ERROR,
     'no-unused-vars': [ERROR, {
       'vars': 'all',
-      'args': 'after-used'
+      'args': 'after-used',
     }],
     'no-use-before-define': [ERROR, 'nofunc'],
     'no-useless-escape': WARN,
@@ -81,12 +81,12 @@ module.exports = {
     }],
     'prefer-template': WARN,
     'spaced-comment': [DISABLED, 'always', {
-      'markers': ['global']
+      'markers': ['global'],
     }],
     'strict': DISABLED,
     'require-jsdoc': WARN,
     'valid-jsdoc': [DISABLED, {
-      'requireReturn': false
+      'requireReturn': false,
     }],
     'wrap-iife': [WARN, 'inside'],
   },
