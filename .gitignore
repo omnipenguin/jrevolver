@@ -1,4 +1,5 @@
 mockgen/*
+_mockgen*/*
 .idea
 
 # Logs

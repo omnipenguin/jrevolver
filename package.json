@@ -1,6 +1,6 @@
 {
   "name": "jrevolver",
-  "version": "1.4.2",
+  "version": "2.0.0",
   "description": "A robust app for generating mock JSON for testing purposes.",
   "author": "omnipenguin",
   "license": "MIT",
@@ -36,7 +36,8 @@
     "lodash.escaperegexp": "^4.1.2",
     "lodash.assigninwith": "^4.2.0",
     "object-assign-deep": "^0.4.0",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.4",
+    "sort-keys-recursive": "^2.1.7"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",

@@ -1,15 +1,24 @@
 #! /usr/bin/env node
 import colors from 'colors';
 import shell from 'shelljs';
-import { permutationSetTestData, permutationSetExpectedData, RESULT_MERGE_TYPE } from './constants.js';
-import { buildMockHashesMap } from './test-helpers.js';
-import { arrayEquals, isArray, isObjectNotArray, consoleLogObj } from '../lib/helpers.js';
+import {
+  FLAG_VALIDATE,
+  MOCK_HASH_MAP_KEYS,
+  RESULT_MERGE_TYPE,
+  permutationSetTestData,
+  permutationSetExpectedData,
+} from './test-constants.js';
+import { cleanObject, buildMockHashesMap } from './test-helpers.js';
+import { arrayEquals, excludeArray, isArray, isObjectNotArray, consoleLogObj } from '../lib/helpers.js';
 import { MERGE_BEHAVIOR, REPLACE_EMPTY_BEHAVIOR } from '../lib/PermutationSet.js';
 
 Error.stackTraceLimit = 1000;
 
-shell.exec(`npm run clean-generated`);
-shell.exec(`npm run generate-mocks`);
+// if --validate flag is passed, don't regenerate mocks
+if (!process.argv.includes(FLAG_VALIDATE)) {
+  shell.exec(`yarn clean-generated`);
+  shell.exec(`yarn generate-mocks`);
+}
 
 // build hash list of generated mocks
 const mockHashes = buildMockHashesMap();
@@ -20,24 +29,77 @@ console.log(colors.cyan("Testing mock generation:\n"));
 let numInvalidHashes = 0;
 
 for (const [ mockPath, mockMap ] of Object.entries(mockHashes)) {
-  const { found, expected } = mockMap;
-  // mock has multiple permutations
-  if (isArray(found) && isArray(expected)) {
-    if (arrayEquals(found, expected)) {
-      console.log(`${mockPath}/* : ` + colors.green(`${found.length}/${expected.length} HASHES MATCH!`));
+  const { foundFiles, foundHashes, expectedFiles, expectedHashes } = mockMap;
+
+  const cleanedMockMap = cleanObject(mockMap);
+  const expectedSinglePermutation = Object.entries(cleanedMockMap).filter(([,v]) => !isArray(v) && (typeof v === 'string')).length === MOCK_HASH_MAP_KEYS.length;
+  const expectedMultiplePermutations = Object.entries(cleanedMockMap).filter(([,v]) => isArray(v)).length === MOCK_HASH_MAP_KEYS.length;
+  const missingData = Object.keys(mockMap).filter(k => !cleanedMockMap.hasOwnProperty(k));
+
+  // mock has only a single permutation
+  if (expectedSinglePermutation) {
+    const hashesMatch = (foundHashes === expectedHashes);
+    const fileNamesMatch = (foundFiles === expectedFiles);
+
+    if (hashesMatch) {
+      if (fileNamesMatch) {
+        console.log(`${mockPath} : ${colors.green('HASH MATCHES!')}`);
+      } else {
+        console.log(`${mockPath} : ${colors.green('VALID HASH')}, ${colors.red('INVALID FILENAME!')}`);
+        numInvalidHashes++;
+      }
     } else {
-      console.log(`${mockPath}/* : ` + colors.red(`INVALID HASHES! (${found.length} found, ${expected.length} expected)`));
-      numInvalidHashes++;
+      if (fileNamesMatch) {
+        console.log(`${mockPath} : ${colors.green('VALID FILENAME')}, ${colors.red('INVALID HASH!')}`);
+        numInvalidHashes++;
+      } else {
+        console.log(`${mockPath} : ${colors.red('INVALID HASH AND FILENAME!')}`);
+        numInvalidHashes++;
+      }
     }
   }
-  // mock has only a single permutation
-  else {
-    if (found === expected) {
-      console.log(`${mockPath} : ${colors.green('HASH MATCHES!')}`);
+  // mock has multiple permutations
+  else if (expectedMultiplePermutations) {
+    const hashesMatch = arrayEquals(foundHashes, expectedHashes);
+    const fileNamesMatch = arrayEquals(foundFiles, expectedFiles);
+
+    const invalidHashes = excludeArray(...[ foundHashes, expectedHashes ].sort((a, b) => b.length - a.length));
+    const invalidFileNames = excludeArray(...[ foundFiles, expectedFiles ].sort((a, b) => b.length - a.length));
+
+    const hashesRatio = `${foundHashes.length}/${expectedHashes.length}`;
+    const filesRatio = `${foundFiles.length}/${expectedFiles.length}`;
+
+    const hashesMatchMsg = `${hashesRatio} HASHES MATCH!`;
+    const hashesValidMsg = `${hashesRatio} VALID HASHES`;
+    const filesValidMsg = `${filesRatio} VALID FILENAMES`;
+
+    const hashText = invalidHashes.length > 1 ? 'HASHES' : 'HASH';
+    const fileNameText = invalidFileNames.length > 1 ? 'FILENAMES' : 'FILENAME';
+
+    const invalidHashesMsg = `${invalidHashes.length} INVALID ${hashText} (${foundHashes.length} found, ${expectedHashes.length} expected)`;
+    const invalidFileNamesMsg = `${invalidFileNames.length} INVALID ${fileNameText} (${foundFiles.length} found, ${expectedFiles.length} expected)`;
+
+    if (hashesMatch) {
+      if (fileNamesMatch) {
+        console.log(`${mockPath}/* : ${colors.green(hashesMatchMsg)}`);
+      } else {
+        console.log(`${mockPath}/* : ${colors.green(hashesValidMsg)}, ${colors.red(invalidFileNamesMsg)}`);
+        numInvalidHashes++;
+      }
     } else {
-      console.log(`${mockPath} : ${colors.red('INVALID HASH!')}`);
-      numInvalidHashes++;
+      if (fileNamesMatch) {
+        console.log(`${mockPath}/* : ${colors.green(filesValidMsg)}, ${colors.red(invalidHashesMsg)}`);
+        numInvalidHashes++;
+      } else {
+        console.log(`${mockPath}/* : ${colors.red(invalidHashesMsg)}, ${colors.red(invalidFileNamesMsg)}`);
+        numInvalidHashes++;
+      }
     }
+  }
+  // ERROR: invalid test data detected
+  else if (missingData.length) {
+    console.log(`${mockPath} : ` + colors.red(`INVALID TEST DATA! (missing ${missingData.join(', ')})`));
+    numInvalidHashes++;
   }
 }
 

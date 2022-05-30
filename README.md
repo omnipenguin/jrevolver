@@ -1,6 +1,6 @@
 # What is jRevolver?
 
-A robust app for generating mock JSON for development and testing purposes
+A robust app for generating mock JSON for development and testing purposes.
 
 # Intent
 
@@ -19,7 +19,7 @@ To build a flexible and robust mock data generation tool that can be easily be p
 
 ### --map
 
---map allows you assign many different values to a single property, generating a permutation for each discrete value.
+`--map` allows you assign many different values to a single property, generating a permutation for each discrete value.
 
 #### Simple Use
 
@@ -114,9 +114,76 @@ This would generate **3 mocks**
 }
 ```
 
+### --mapZipper
+
+`--mapZipper` zips maps together in an alternating pattern.
+
+Outputted files will be the same as when using `--map`, but when using `parseLayout()` directly, you'll have the benefit of the map values alternating.
+You must include the values to zip together using `--include` with `PERMUTE`.
+
+#### Simple Use
+
+`includes/numbers.json`
+```
+{
+  "--mapZipper number": [ 1, 2, 3, 4 ]
+}
+```
+
+`mapZipper_simple_use.json`
+```
+{
+  "--include includes/numbers.json": "PERMUTE",
+  "--mapZipper number": [ 5, 6, 7, 8 ]
+}
+```
+
+`parseLayout()` output, in order:
+
+```
+{
+  "number": 1
+}
+```
+```
+{
+  "number": 5
+}
+```
+```
+{
+  "number": 2
+}
+```
+```
+{
+  "number": 6
+}
+```
+```
+{
+  "number": 3
+}
+```
+```
+{
+  "number": 7
+}
+```
+```
+{
+  "number": 4
+}
+```
+```
+{
+  "number": 8
+}
+```
+
 #### Current context maps
 
-You can use a --map with no property name to permute the values inside within the current JSON context (instead of on a new property)
+You can use a `--map` with no property name to permute the values inside within the current JSON context (instead of on a new property).
 
 `map_with_current_context.json`
 ```
@@ -420,7 +487,7 @@ This would generate **4 mocks**
 
 #### --mapContent: exclude and allow lists with non-object values
 
-In order to exclude or allow a permutation for a map where the value is a non-primitive type, it must have a --mapKey property. But what if you want to filter a value that is an Array, or another non-Object that is also not a JSON primitive type? --mapContent allows you to do this:
+In order to exclude or allow a permutation for a map where the value is a non-primitive type, it must have a `--mapKey` property. But what if you want to filter a value that is an Array, or another non-Object that is also not a JSON primitive type? `--mapContent` allows you to do this:
 
 `map_with_mapContent.json`
 ```
@@ -506,13 +573,13 @@ This out output the mocks:
 }
 ```
 
-The value of the --mapContent property (the array) becomes the value of endsUpAnArray (for that permutation). We are also excluding the permutation indexed by --mapKey "ggH"
+The value of the `--mapContent` property (the array) becomes the value of endsUpAnArray (for that permutation). We are also excluding the permutation indexed by `--mapKey` "ggH".
 
 ### --include
 
---include allows you to combine multiple JSON files
+`--include` allows you to combine multiple JSON files
 
-#### Simple Use
+#### Simple Use with DEFAULTS
 
 `includes/metaData.json`
 ```
@@ -549,9 +616,9 @@ This would output the mock:
 }
 ```
 
-Simple use, with overridden values
+Simple use, with default values
 
-`include_simple_use_overrides.json`
+`include_simple_use.json`
 ```
 {
   "experiments": {
@@ -560,6 +627,39 @@ Simple use, with overridden values
   "metaData": {
     "--include includes/metaData.json": "DEFAULTS",
     "numEmailsSent": 10
+  }
+}
+```
+
+This would output the mock:
+
+`include_simple_use.json` – generated mocks
+```
+{
+  "experiments": {
+    "canSendEmails": true
+  },
+  "metaData": {
+    "firstName": "bob",
+    "lastName": "smith",
+    "numEmailsSent": 10
+  }
+}
+```
+
+Notice how the default value for numEmailsSent has been overridden.
+
+#### Simple Use, with OVERIRDES
+
+`include_simple_use_overrides.json`
+```
+{
+  "experiments": {
+    "canSendEmails": true
+  },
+  "metaData": {
+    "--include includes/metaData.json": "OVERRIDES",
+    "numEmailsSent": 15
   }
 }
 ```
@@ -575,16 +675,16 @@ This would output the mock:
   "metaData": {
     "firstName": "bob",
     "lastName": "smith",
-    "numEmailsSent": 10
+    "numEmailsSent": 5
   }
 }
 ```
 
-Notice how numEmailsSent has been overridden.
+Notice how the included value has overridden the value in the base JSON file.
 
-#### Simple use, permutations with overridden values
+#### Simple use, with permutations
 
-`include_simple_use_override_and_permute.json`
+`include_simple_use_permute.json`
 ```
 {
   "experiments": {
@@ -599,7 +699,7 @@ Notice how numEmailsSent has been overridden.
 
 This would output the mocks:
 
-`include_simple_use_override_and_permute.json` – generated mocks
+`include_simple_use_permute.json` – generated mocks
 ```
 {
   "experiments": {
@@ -625,11 +725,11 @@ This would output the mocks:
 }
 ```
 
-You could also use a --map on numEmailsSent to generate even more permutations
+You could also use a `--map` on numEmailsSent to generate even more permutations.
 
 ### Other useful information
 
-A map in a file that is included with "DEFAULTS" will be overridden by an identically named non-map property in the root JSON file
+A map in a file that is included with `DEFAULTS` will be overridden by an identically named non-map property in the root JSON file.
 
 `metaData.json`
 ```
@@ -655,7 +755,7 @@ Will result in the mock:
 }
 ```
 
-A property in a file that is included with "DEFAULTS" will be overridden by an identically named map in the root JSON file
+A property in a file that is included with `DEFAULTS` will be overridden by an identically named map in the root JSON file.
 
 `metaData.json`
 ```
@@ -686,7 +786,7 @@ Will result in the mocks:
 }
 ```
 
-A map in a file that is included with "PERMUTE" will be combined with identically named maps, AND identically named non-map properties in the root JSON file
+A map in a file that is included with `PERMUTE` will be combined with identically named maps, AND identically named non-map properties in the root JSON file.
 
 `metaData.json`
 ```
@@ -765,7 +865,7 @@ Will result in the mocks:
 
 ### --comment
 
---comment allows you to leave a comment in your mock layout that will be removed from the final compiled output.
+`--comment` allows you to leave a comment in your mock layout that will be removed from the final compiled output.
 
 `mock_with_comment.json`
 ```
@@ -795,7 +895,7 @@ will result in the mocks:
 
 ### --filename
 
---filename allows you to specify a custom filename for outputted mock files. You can use values from the current mock file in the filename. If the naming schema defined would cause multiple mocks with the same filename to be generated, every mock that would have duplicated filenames after the first will be generated with its default (hashed) filename.
+`--filename` allows you to specify a custom filename for outputted mock files. You can use values from the current mock file in the filename. If the naming schema defined would cause multiple mocks with the same filename to be generated, every mock that would have duplicated filenames after the first will be generated with its default (hashed) filename.
 
 `mock_with_filename.json`
 ```

@@ -1,0 +1,9 @@
+{
+  "experiments": {
+    "canSendEmails": true
+  },
+  "metaData": {
+    "--include includes/metaData.json": "OVERRIDES",
+    "numEmailsSent": 10
+  }
+}

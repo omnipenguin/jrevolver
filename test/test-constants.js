@@ -1,38 +1,54 @@
 import PermutationSet, { MERGE_BEHAVIOR, REPLACE_EMPTY_BEHAVIOR } from '../lib/PermutationSet.js';
 
+export const FLAG_VALIDATE = '--validate';
+
+export const HASH_FILENAME_SPLIT_SENTINEL = /\s?\|\s?/i;
+export const MOCK_HASH_MAP_KEYS = [ 'foundFiles', 'foundHashes', 'expectedFiles', 'expectedHashes' ];
+export const MOCK_HASH_MAP = Object.fromEntries(MOCK_HASH_MAP_KEYS.map(k => [k,k]));
+
 export const MOCK_GENERATED_PATH = 'mockgen';
 export const MOCK_HASH_PATH = 'test/hashes';
 
 export const MOCK_PATHS = {
-  SINGLE_OUTPUT: [
+  SINGLE_PERMUTATION: [
     'sample_include/comments',
-    'sample_include/override',
-    'sample_include/override_nested_single',
-    'sample_include/simple',
+
+    'sample_include/defaults/defaults',
+    'sample_include/defaults/nested_single',
+    'sample_include/defaults/simple_value',
+
+    'sample_include/overrides/overrides',
   ],
   WITH_PERMUTATIONS: [
-    'sample_include/extra_dir',
-    'sample_include/override_permute',
-    'sample_include/override_permute_with_map',
-    'sample_include/override_with_map',
-    'sample_include/permute_nested_multiple',
-    'sample_include/with_map',
-    'sample_map/array',
-    'sample_map/exclude',
-    'sample_map/exclude_nested',
+    'sample_combo/defaults/array_map_multiple_with_nested_array_map_include',
+    'sample_combo/defaults/array_map_single_nested_array_map_include',
+    'sample_combo/defaults/map_nested_array_include',
+    'sample_combo/defaults/map_nested_multiple_types',
+    'sample_combo/defaults/spaces_in_key_names',
+
+    'sample_include/defaults/array_value_with_map',
+    'sample_include/defaults/defaults_with_map',
+
+    'sample_include/overrides/overrides_with_map',
+
+    'sample_include/permute/extra_dir',
+    'sample_include/permute/permute',
+    'sample_include/permute/permute_nested_multiple',
+    'sample_include/permute/permute_with_map',
+    'sample_include/permute/permute_with_mapZipper',
+
+    'sample_map/array_with_mapKey_mapContent',
     'sample_map/current_context',
     'sample_map/current_context_nested_arrays',
     'sample_map/custom_filename',
     'sample_map/custom_filename_warning',
     'sample_map/gnarly',
-    'sample_map/property_multiple_types',
+    'sample_map/mapAllowOnly',
+    'sample_map/mapExclude_nested_with_mapKey_mapContent',
+    'sample_map/mapExclude_with_mapKey',
+    'sample_map/nested_property_multiple_types',
     'sample_map/simple',
-    'sample_map/allow_only',
-    'sample_combo/array_map_multiple_with_nested_array_map_include',
-    'sample_combo/array_map_single_nested_array_map_include',
-    'sample_combo/map_nested_array_include',
-    'sample_combo/map_nested_multiple_types',
-    'sample_combo/spaces_in_key_names',
+    'sample_map/simple_mapZipper',
   ],
 };
 
@@ -242,7 +258,7 @@ export function permutationSetExpectedData() {
       },
     ]),
   };
-};
+}
 
 // mergePermutations() test data merge types
 export const RESULT_MERGE_TYPE = {

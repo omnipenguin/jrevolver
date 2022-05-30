@@ -1,0 +1,6 @@
+{
+  "--include includes/metaData_for_mapZipper.json": "PERMUTE",
+  "--map prevJobId": [ 1, 2, 3, 4, 5 ],
+  "--mapZipper hoursWorked": [ "base_16", null, false ],
+  "--mapZipper favAnimal": [ "penguin", "owl", "seal" ]
+}
