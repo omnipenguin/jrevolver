@@ -5,7 +5,7 @@ import path from 'path';
 import shell from 'shelljs';
 import sortKeysRecursive from 'sort-keys-recursive';
 import { ICON } from '../lib/constants.js';
-import { MOCK_GENERATED_PATH } from './test-constants.js'
+import { MOCK_FILE_EXTENSION, MOCK_GENERATED_PATH } from './test-constants.js'
 import { cleanUndefined, getSelfCmd, md5 } from '../lib/helpers.js';
 
 /**
@@ -102,7 +102,7 @@ for (const mockFilePath of unsortedOldMockFiles) {
   const formattedJson = JSON.stringify(sortedData, null, 2);
   const newMockDir = path.join(baseDir, oldSortedMockGenDir, mockDir);
 
-  const newMockFileName = /^[a-f0-9]{32}\.json$/gi.test(mockFileName) ? `${md5(formattedJson)}.json` : mockFileName;
+  const newMockFileName = /^[a-f0-9]{32}\.json$/gi.test(mockFileName) ? `${md5(formattedJson)}${MOCK_FILE_EXTENSION}` : mockFileName;
   const newMockPath = `${newMockDir}/${newMockFileName}`;
 
   shell.mkdir('-p', newMockDir);

@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from 'fs';
 import path from 'path';
 import { cleanArray, md5 } from '../lib/helpers.js';
+import { MOCK_FILE_EXTENSION } from '../lib/constants.js';
 import {
   HASH_FILENAME_SPLIT_SENTINEL as MOCK_HASH_SPLIT,
   MOCK_HASH_MAP as MH,
@@ -15,7 +16,7 @@ import {
  * @returns {Object}
  */
 function cleanObjValues(obj) {
-  return Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, !!v && v.length ? v : undefined]));
+  return Object.fromEntries(Object.entries(obj).map(([k, v]) => [k, !!v ? v : undefined]));
 }
 
 /**
@@ -24,7 +25,7 @@ function cleanObjValues(obj) {
  * @returns {Object}
  */
 export function cleanObject(obj) {
-  return Object.fromEntries(Object.entries(obj).filter(([,v]) => v !== undefined && v !== null));
+  return Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== undefined && v !== null));
 }
 
 /**
@@ -33,10 +34,11 @@ export function cleanObject(obj) {
  */
 export function buildMockHashesMap() {
   const mockHashes = {};
+  const isValidMd5 = (hash) => /^[a-f0-9]{32}\.json$/gi.test(hash);
 
   // build hash list of generated mocks that only generate a single permutation
   for (const mockFile of MOCK_PATHS.SINGLE_PERMUTATION) {
-    const mockPath = `${MOCK_GENERATED_PATH}/${mockFile}.json`;
+    const mockPath = `${MOCK_GENERATED_PATH}/${mockFile}${MOCK_FILE_EXTENSION}`;
     const mockHashPath = `${MOCK_HASH_PATH}/${mockFile}`;
     const [ expectedFiles = undefined, expectedHashes = undefined ] = existsSync(mockHashPath) ? readFileSync(mockHashPath, 'utf8').split(MOCK_HASH_SPLIT) : [];
 
@@ -56,9 +58,9 @@ export function buildMockHashesMap() {
     const expectedHashMap = existsSync(mockHashPath) ? readFileSync(mockHashPath, 'utf8').split('\n').filter(f => f) : [];
 
     mockHashes[mockDir] = cleanObjValues({
-      [MH.foundFiles]: mockDirContents,
+      [MH.foundFiles]: mockDirContents.filter(fn => !isValidMd5(fn)),
       [MH.foundHashes]: mockDirContents.map(f => md5(readFileSync(path.join(mockDir, f), 'utf8'))),
-      [MH.expectedFiles]: cleanArray(expectedHashMap.map(f => f.split(MOCK_HASH_SPLIT)[0])),
+      [MH.expectedFiles]: cleanArray(expectedHashMap.map(f => f.split(MOCK_HASH_SPLIT)[0]).filter(fn => !isValidMd5(fn))),
       [MH.expectedHashes]: cleanArray(expectedHashMap.map(f => {
         const [ eFile, eHash ] = f.split(MOCK_HASH_SPLIT);
         return eHash ?? eFile.substring(0, eFile.lastIndexOf('.'));

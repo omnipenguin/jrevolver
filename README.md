@@ -1,4 +1,4 @@
-# What is jRevolver?
+# jRevolver
 
 A robust app for generating mock JSON for development and testing purposes.
 
@@ -17,7 +17,9 @@ To build a flexible and robust mock data generation tool that can be easily be p
 
 ## Examples
 
+---
 ### --map
+---
 
 `--map` allows you assign many different values to a single property, generating a permutation for each discrete value.
 
@@ -114,7 +116,9 @@ This would generate **3 mocks**
 }
 ```
 
+---
 ### --mapZipper
+---
 
 `--mapZipper` zips maps together in an alternating pattern.
 
@@ -181,7 +185,9 @@ You must include the values to zip together using `--include` with `PERMUTE`.
 }
 ```
 
-#### Current context maps
+---
+### Current context maps
+---
 
 You can use a `--map` with no property name to permute the values inside within the current JSON context (instead of on a new property).
 
@@ -485,7 +491,9 @@ This would generate **4 mocks**
 }
 ```
 
-#### --mapContent: exclude and allow lists with non-object values
+---
+### --mapContent: exclude and allow lists with non-object values
+---
 
 In order to exclude or allow a permutation for a map where the value is a non-primitive type, it must have a `--mapKey` property. But what if you want to filter a value that is an Array, or another non-Object that is also not a JSON primitive type? `--mapContent` allows you to do this:
 
@@ -575,11 +583,13 @@ This out output the mocks:
 
 The value of the `--mapContent` property (the array) becomes the value of endsUpAnArray (for that permutation). We are also excluding the permutation indexed by `--mapKey` "ggH".
 
+---
 ### --include
+---
 
 `--include` allows you to combine multiple JSON files
 
-#### Simple Use with DEFAULTS
+#### Simple Use with `DEFAULTS`
 
 `includes/metaData.json`
 ```
@@ -649,7 +659,7 @@ This would output the mock:
 
 Notice how the default value for numEmailsSent has been overridden.
 
-#### Simple Use, with OVERIRDES
+#### Simple Use, with `OVERRIRDES`
 
 `include_simple_use_overrides.json`
 ```
@@ -682,7 +692,7 @@ This would output the mock:
 
 Notice how the included value has overridden the value in the base JSON file.
 
-#### Simple use, with permutations
+#### Simple use, with `PERMUTE`
 
 `include_simple_use_permute.json`
 ```
@@ -726,6 +736,147 @@ This would output the mocks:
 ```
 
 You could also use a `--map` on numEmailsSent to generate even more permutations.
+
+---
+### --concat
+---
+
+`--concat` concatenates property values together.
+
+Supports `Array`, `String`, `Boolean`, `Number`, and `null` types.
+
+When concatenating with a `String`, `Boolean`, `Number`, and `null` types are converted to a `String`.
+
+When including additional files, `--concat`'s are merged together.
+
+`sample_concat_merge.json`
+```
+{
+  "propStringWithString": "abcdef",
+  "--concat propStringWithString": "123456",
+  "propStringWithNumber": "abcdef",
+  "--concat propStringWithNumber": 123456,
+  "propStringWithArray": "abcdef",
+  "--concat propStringWithArray": [1, 2, 3, 4, 5, 6],
+  "propStringWithNull": "abcdef",
+  "--concat propStringWithNull": null,
+  "propStringWithBooleanTrue": "abcdef",
+  "--concat propStringWithBooleanTrue": true,
+  "propStringWithBooleanFalse": "abcdef",
+  "--concat propStringWithBooleanFalse": false,
+
+  "propArrayWithString": ["g", "h", "i", "j", "k", "l"],
+  "--concat propArrayWithString": "123456",
+  "propArrayWithNumber": ["g", "h", "i", "j", "k", "l"],
+  "--concat propArrayWithNumber": 123456,
+  "propArrayWithArray": ["g", "h", "i", "j", "k", "l"],
+  "--concat propArrayWithArray": [ 1, 2, 3, 4, 5, 6 ],
+  "propArrayWithBooleanTrue": ["g", "h", "i", "j", "k", "l"],
+  "--concat propArrayWithBooleanTrue": true,
+  "propArrayWithBooleanFalse": ["g", "h", "i", "j", "k", "l"],
+  "--concat propArrayWithBooleanFalse": false,
+  "propArrayWithNull": ["g", "h", "i", "j", "k", "l"],
+  "--concat propArrayWithNull": null,
+
+  "propNullWithString": null,
+  "--concat propNullWithString": "123456",
+  "propNullWithNumber": null,
+  "--concat propNullWithNumber": 123456,
+  "propNullWithArray": null,
+  "--concat propNullWithArray": [1, 2, 3, 4, 5, 6],
+  "propNullWithBooleanTrue": null,
+  "--concat propNullWithBooleanTrue": true,
+  "propNullWithBooleanFalse": null,
+  "--concat propNullWithBooleanFalse": false,
+  "propNullWithNull": null,
+  "--concat propNullWithNull": null
+}
+```
+
+`includes/concat.json`
+```
+{
+  "--concat propStringWithString": "_aaabbb_"
+}
+```
+
+`sample_concat.json` - generated mock
+```
+{
+  "propArrayWithArray": ["g", "h", "i", "j", "k", "l", 1, 2, 3, 4, 5, 6],
+  "propArrayWithBooleanFalse": ["g", "h", "i", "j", "k", "l", false],
+  "propArrayWithBooleanTrue": ["g", "h", "i", "j", "k", "l", true],
+  "propArrayWithNull": ["g", "h", "i", "j", "k", "l", null],
+  "propArrayWithNumber": ["g", "h", "i", "j", "k", "l", 123456],
+  "propArrayWithString": ["g", "h", "i", "j", "k", "l", "123456"],
+  "propNullWithArray": [null, 1, 2, 3, 4, 5, 6],
+  "propNullWithBooleanFalse": "nullfalse",
+  "propNullWithBooleanTrue": "nulltrue",
+  "propNullWithNull": "nullnull",
+  "propNullWithNumber": "null123456",
+  "propNullWithString": "null123456",
+  "propStringWithArray": ["abcdef", 1, 2, 3, 4, 5, 6],
+  "propStringWithBooleanFalse": "abcdeffalse",
+  "propStringWithBooleanTrue": "abcdeftrue",
+  "propStringWithNull": "abcdefnull",
+  "propStringWithNumber": "abcdef123456",
+  "propStringWithString": "abcdef123456_aaabbb_"
+}
+```
+
+---
+### --zipperMerge
+---
+
+`--zipperMerge` merges property values together in an alternating pattern.
+
+Supports `Array`, `String`, `Boolean`, `Number`, and `null` types.
+
+When merging with a `String`, `Boolean`, `Number`, and `null` types are converted to a `String`.
+
+When including additional files, all `--zipperMerge`'s are zipped together in an alternating pattern.
+
+`sample_zipperMerge.json`
+```
+{
+  "propStringWithString": "abcdef",
+  "--zipperMerge propStringWithString": "123456",
+  "propStringWithArray": "abcdef",
+  "--zipperMerge propStringWithArray": [ 1, 2, 3, 4, 5, 6 ],
+
+  "propArrayWithString": [ "g", "h", "i", "j", "k", "l" ],
+  "--zipperMerge propArrayWithString": "123456",
+  "propArrayWithArray": [ "g", "h", "i", "j", "k", "l" ],
+  "--zipperMerge propArrayWithArray": [ 1, 2, 3, 4, 5, 6 ],
+  "propArrayWithNull": [ "g", "h", "i", "j", "k", "l" ],
+  "--zipperMerge propArrayWithNull": null,
+
+  "--include includes/zipperMerge.json": "DEFAULTS"
+}
+```
+
+`includes/zipperMerge.json`
+```
+{
+  "--zipperMerge propStringWithString": "_778899_",
+  "--zipperMerge propStringWithArray": [ 7, 8, 9, 10, 11 ],
+
+  "--zipperMerge propArrayWithString":  "_778899_",
+  "--zipperMerge propArrayWithArray": [ 7, 8, 9, 10, 11 ],
+  "--zipperMerge propArrayWithNull": null
+}
+```
+
+`sample_zipperMerge.json` - generated mock
+```
+{
+  "propArrayWithArray": ["g", 7, 1, 8, "h", 9, 2, 10, "i", 11, 3, "j", 4, "k", 5, "l", 6],
+  "propArrayWithNull": ["g", null, null, "h", "i", "j", "k", "l"],
+  "propArrayWithString": ["g", "_778899_", "123456", "h", "i", "j", "k", "l"],
+  "propStringWithArray": "abcdef",
+  "propStringWithString": "a_17b728c839d94_e5f6"
+}
+```
 
 ### Other useful information
 
@@ -863,7 +1014,9 @@ Will result in the mocks:
 }
 ```
 
+---
 ### --comment
+---
 
 `--comment` allows you to leave a comment in your mock layout that will be removed from the final compiled output.
 
@@ -893,7 +1046,9 @@ will result in the mocks:
 }
 ```
 
+---
 ### --filename
+---
 
 `--filename` allows you to specify a custom filename for outputted mock files. You can use values from the current mock file in the filename. If the naming schema defined would cause multiple mocks with the same filename to be generated, every mock that would have duplicated filenames after the first will be generated with its default (hashed) filename.
 

@@ -1,0 +1,28 @@
+{
+  "propStringWithString": "abcdef",
+  "--zipperMerge propStringWithString": "123456",
+  "propStringWithNumber": "abcdef",
+  "--zipperMerge propStringWithNumber": 123456,
+  "propStringWithArray": "abcdef",
+  "--zipperMerge propStringWithArray": [ 1, 2, 3, 4, 5, 6 ],
+  "propStringWithNull": "abcdef",
+  "--zipperMerge propStringWithNull": null,
+
+  "propArrayWithString": [ "g", "h", "i", "j", "k", "l" ],
+  "--zipperMerge propArrayWithString": "123456",
+  "propArrayWithNumber": [ "g", "h", "i", "j", "k", "l" ],
+  "--zipperMerge propArrayWithNumber": 123456,
+  "propArrayWithArray": [ "g", "h", "i", "j", "k", "l" ],
+  "--zipperMerge propArrayWithArray": [ 1, 2, 3, 4, 5, 6 ],
+  "propArrayWithNull": [ "g", "h", "i", "j", "k", "l" ],
+  "--zipperMerge propArrayWithNull": null,
+
+  "propNullWithString": null,
+  "--zipperMerge propNullWithString": "123456",
+  "propNullWithNumber": null,
+  "--zipperMerge propNullWithNumber": 123456,
+  "propNullWithArray": null,
+  "--zipperMerge propNullWithArray": [ 1, 2, 3, 4, 5, 6 ],
+  "propNullWithNull": null,
+  "--zipperMerge propNullWithNull": null
+}

@@ -1,0 +1,22 @@
+{
+  "--concat propStringWithString": "_778899_",
+  "--concat propStringWithNumber": 778899,
+  "--concat propStringWithArray": [ 7, 8, 9, 10, 11 ],
+  "--concat propStringWithNull": null,
+  "--concat propStringWithBooleanTrue": true,
+  "--concat propStringWithBooleanFalse": false,
+
+  "--concat propArrayWithString": "_aabbcc_",
+  "--concat propArrayWithNumber": 778899,
+  "--concat propArrayWithArray": [ 7, 8, 9, 10, 11 ],
+  "--concat propArrayWithBooleanTrue": true,
+  "--concat propArrayWithBooleanFalse": false,
+  "--concat propArrayWithNull": null,
+
+  "--concat propNullWithString": "_aabbcc_",
+  "--concat propNullWithNumber": 778899,
+  "--concat propNullWithArray": [ 7, 8, 9, 10, 11 ],
+  "--concat propNullWithBooleanTrue": true,
+  "--concat propNullWithBooleanFalse": false,
+  "--concat propNullWithNull": null
+}

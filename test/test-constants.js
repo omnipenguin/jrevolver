@@ -11,13 +11,18 @@ export const MOCK_HASH_PATH = 'test/hashes';
 
 export const MOCK_PATHS = {
   SINGLE_PERMUTATION: [
-    'sample_include/comments',
+    'comments',
 
     'sample_include/defaults/defaults',
     'sample_include/defaults/nested_single',
     'sample_include/defaults/simple_value',
 
     'sample_include/overrides/overrides',
+
+    'sample_merge/concat',
+    'sample_merge/concat_with_include',
+    'sample_merge/zipperMerge',
+    'sample_merge/zipperMerge_with_include',
   ],
   WITH_PERMUTATIONS: [
     'sample_combo/defaults/array_map_multiple_with_nested_array_map_include',

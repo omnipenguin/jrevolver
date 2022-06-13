@@ -1,0 +1,16 @@
+{
+  "--zipperMerge propStringWithString": "_778899_",
+  "--zipperMerge propStringWithNumber": 778899,
+  "--zipperMerge propStringWithArray": [ 7, 8, 9, 10, 11 ],
+  "--zipperMerge propStringWithNull": null,
+
+  "--zipperMerge propArrayWithString": "_778899_",
+  "--zipperMerge propArrayWithNumber": 778899,
+  "--zipperMerge propArrayWithArray": [ 7, 8, 9, 10, 11 ],
+  "--zipperMerge propArrayWithNull": null,
+
+  "--zipperMerge propNullWithString": "_778899_",
+  "--zipperMerge propNullWithNumber": 778899,
+  "--zipperMerge propNullWithArray": [ 7, 8, 9, 10, 11 ],
+  "--zipperMerge propNullWithNull": null
+}

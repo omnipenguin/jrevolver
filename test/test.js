@@ -9,7 +9,7 @@ import {
   permutationSetExpectedData,
 } from './test-constants.js';
 import { cleanObject, buildMockHashesMap } from './test-helpers.js';
-import { arrayEquals, excludeArray, isArray, isObjectNotArray, consoleLogObj } from '../lib/helpers.js';
+import { arrayEquals, cleanArray, excludeArray, isArray, isObjectNotArray, consoleLogObj } from '../lib/helpers.js';
 import { MERGE_BEHAVIOR, REPLACE_EMPTY_BEHAVIOR } from '../lib/PermutationSet.js';
 
 Error.stackTraceLimit = 1000;
@@ -83,12 +83,22 @@ for (const [ mockPath, mockMap ] of Object.entries(mockHashes)) {
       if (fileNamesMatch) {
         console.log(`${mockPath}/* : ${colors.green(hashesMatchMsg)}`);
       } else {
-        console.log(`${mockPath}/* : ${colors.green(hashesValidMsg)}, ${colors.red(invalidFileNamesMsg)}`);
+        const hashesFilesOutput = cleanArray([
+          (foundHashes.length || expectedHashes.length) ? colors.green(hashesValidMsg) : '',
+          colors.red(invalidFileNamesMsg),
+        ]).join(', ');
+
+        console.log(`${mockPath}/* : ${hashesFilesOutput}`);
         numInvalidHashes++;
       }
     } else {
       if (fileNamesMatch) {
-        console.log(`${mockPath}/* : ${colors.green(filesValidMsg)}, ${colors.red(invalidHashesMsg)}`);
+        const filesHashesOutput = cleanArray([
+          (foundFiles.length || expectedFiles.length) ? colors.green(filesValidMsg) : '',
+          colors.red(invalidHashesMsg),
+        ]).join(', ');
+
+        console.log(`${mockPath}/* : ${filesHashesOutput}`);
         numInvalidHashes++;
       } else {
         console.log(`${mockPath}/* : ${colors.red(invalidHashesMsg)}, ${colors.red(invalidFileNamesMsg)}`);
