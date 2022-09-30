@@ -1,6 +1,6 @@
 {
   "name": "jrevolver",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A robust app for generating mock JSON for testing purposes.",
   "author": "omnipenguin",
   "license": "MIT",

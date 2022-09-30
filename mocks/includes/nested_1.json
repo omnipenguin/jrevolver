@@ -1,0 +1,10 @@
+{
+  "clock": {
+    "url": "http://example.com",
+    "time": {
+      "hours": 5,
+      "minutes": 20
+    },
+    "title": "Example Site"
+  }
+}
