@@ -1,0 +1,12 @@
+{
+  "--mapAllowOnly": [
+    {
+      "numberOfGrams": 111,
+      "metal": "Iridium"
+    },
+    {
+      "--map numberOfGrams": [ 343, 66 ],
+      "--map metal": [ "Heavy", "Iridium" ]
+    }
+  ]
+}

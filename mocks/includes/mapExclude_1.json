@@ -1,0 +1,12 @@
+{
+  "--mapExclude": [
+    {
+      "numberOfGrams": 343,
+      "--map metal": [ "Steel", "Platinum" ]
+    },
+    {
+      "--map numberOfGrams": [ 882, 1124 ],
+      "--map metal": [ "Steel", "Iridium", "Platinum" ]
+    }
+  ]
+}

@@ -16,6 +16,7 @@ export const MOCK_PATHS = {
     'sample_include/defaults/defaults',
     'sample_include/defaults/nested_single',
     'sample_include/defaults/simple_value',
+    'sample_include/defaults/merge_mapExclude',
 
     'sample_include/overrides/overrides',
 
@@ -33,6 +34,7 @@ export const MOCK_PATHS = {
 
     'sample_include/defaults/array_value_with_map',
     'sample_include/defaults/defaults_with_map',
+    'sample_include/defaults/merge_mapAllowOnly',
 
     'sample_include/overrides/overrides_with_map',
 

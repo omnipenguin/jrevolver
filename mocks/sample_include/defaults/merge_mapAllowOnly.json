@@ -1,0 +1,20 @@
+{
+  "temperature": "AbsoluteZero",
+  "--map numberOfGrams": [ 111, 343, 882, 1124 ],
+  "--map metal": [ "Steel", "Iridium", "Platinum", "Heavy", "Uranium" ],
+
+  "--include includes/mapAllowOnly_1.json": "DEFAULTS",
+
+  "--mapAllowOnly": [
+    {
+      "numberOfGrams": 111,
+      "metal": "Platinum"
+    },
+    {
+      "--map numberOfGrams": [ 882, 77 ],
+      "--map metal": [ "Heavy", "Uranium" ]
+    }
+  ],
+
+  "--include includes/mapAllowOnly_2.json": "DEFAULTS"
+}

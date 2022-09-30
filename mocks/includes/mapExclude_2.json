@@ -1,0 +1,8 @@
+{
+  "--mapExclude": [
+    {
+      "--map numberOfGrams": [ 882, 1126 ],
+      "metal": "Uranium"
+    }
+  ]
+}
