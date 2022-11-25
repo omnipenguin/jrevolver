@@ -465,7 +465,7 @@ This would generate **4 mocks**
     {
       "numberOfGrams": 111,
       "metal": "Heavy",
-      "price": "--getMapKey dollars"
+      "price": "--mapKey dollars"
     }
   ]
 }
@@ -525,7 +525,7 @@ In order to exclude or allow a permutation for a map where the value is a non-pr
 }
 ```
 
-This out output the mocks:
+This will output the mocks:
 
 `map_with_mapContent.json` – generated mocks
 ```
@@ -1056,7 +1056,7 @@ will result in the mocks:
 ```
 {
   "--filename": "{page}-page-{locale.language}_{locale.country}",
-  "--map page": [ "Home", "Course" ],
+  "--map page": [ "Home", "Video" ],
   "locale": {
     "--map language": [ "en", "es" ],
     "--map country": [ "US", "MX" ]
@@ -1112,10 +1112,10 @@ This would generate 2x2x2=**8 mocks** with custom filenames
 }
 ```
 
-`Course-page-en_US.json`
+`Video-page-en_US.json`
 ```
 {
-  "page": "Course"
+  "page": "Video"
   "locale": {
     "language": "en",
     "country": "US"
@@ -1123,10 +1123,10 @@ This would generate 2x2x2=**8 mocks** with custom filenames
 }
 ```
 
-`Course-page-en_MX.json`
+`Video-page-en_MX.json`
 ```
 {
-  "page": "Course",
+  "page": "Video",
   "locale": {
     "language": "en",
     "country": "MX"
@@ -1134,10 +1134,10 @@ This would generate 2x2x2=**8 mocks** with custom filenames
 }
 ```
 
-`Course-page-es_US.json`
+`Video-page-es_US.json`
 ```
 {
-  "page": "Course"
+  "page": "Video"
   "locale": {
     "language": "es",
     "country": "US"
@@ -1145,10 +1145,10 @@ This would generate 2x2x2=**8 mocks** with custom filenames
 }
 ```
 
-`Course-page-es_MX.json`
+`Video-page-es_MX.json`
 ```
 {
-  "page": "Course",
+  "page": "Video",
   "locale": {
     "language": "es",
     "country": "MX"
