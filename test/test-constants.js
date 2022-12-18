@@ -57,6 +57,7 @@ export const MOCK_PATHS = {
     'sample_map/nested_property_multiple_types',
     'sample_map/simple',
     'sample_map/simple_mapZipper',
+    'sample_map/special_chars_in_keynames',
   ],
 };
 

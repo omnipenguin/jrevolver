@@ -1,0 +1,42 @@
+{
+  "d.o.t.s": "dots",
+  "d-a-s-h-e-s": "dashes",
+  "u_n_d_e_r_s_c_o_r_e_s": "underscores",
+  "all.of-them_": "all.of-them_ .-_",
+
+  "--map dots.one.two.three": [ ".", "..", "..." ],
+  "--mapZipper numb.ers": [ 3, 6, 9, 12, 15 ],
+  "--comment co.mm-en_t.": "this is a comment",
+
+  "nested.Ctxt-": {
+    "d.o.t.s": "dots",
+    "d-a-s-h-e-s": "dashes",
+    "u_n_d_e_r_s_c_o_r_e_s": "underscores",
+    "all.of-them_": "all.of-them_ .-_",
+
+    "--map dashes-one-two-three": [ "-", "--", "---" ],
+    "--include includes/concat_dots.json": "DEFAULTS",
+    "--concat prop.String-With_String": "_11234_",
+    "--concat prop-String_With.Number.": 11234,
+    "prop.Array-With_String": [ "g", "h", "i", "j", "k", "l" ],
+    "--zipperMerge prop.Array-With_String": "123456",
+
+    "nested.Ctxt2": {
+      "d.o.t.s": "dots",
+      "d-a-s-h-e-s": "dashes",
+      "u_n_d_e_r_s_c_o_r_e_s": "underscores",
+      "all.of-them_": "all.of-them_ .-_",
+
+      "--map underscores_one_two_three": [ "_", "__", "___" ],
+
+      "nested.Ctxt-": {
+        "d.o.t.s": "dots",
+        "d-a-s-h-e-s": "dashes",
+        "u_n_d_e_r_s_c_o_r_e_s": "underscores",
+        "all.of-them_": "all.of-them_ .-_",
+
+        "--map allthree.one-two_three.-_": [ "one", "two", "three" ]
+      }
+    }
+  }
+}
